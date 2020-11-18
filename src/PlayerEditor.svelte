@@ -1,13 +1,18 @@
 <script lang="ts">
-  import { createEventDispatcher } from "svelte";
+  import { createEventDispatcher, onMount } from "svelte";
   import type { Player } from "./types/App.types";
+
+  const dispatch = createEventDispatcher();
 
   let players: Player[] = Array(5)
     .fill("Player")
-    .map((s, i) => `${s} #${i}`);
+    .map((s, i) => s + " #" + (i + 1));
+
   $: updatePlayers(players);
 
-  const dispatch = createEventDispatcher();
+  onMount(async () => {
+    updatePlayers(players);
+  });
 
   function addPlayer() {
     players =

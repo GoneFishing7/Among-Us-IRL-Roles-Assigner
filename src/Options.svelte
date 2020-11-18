@@ -1,12 +1,12 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
-  import type { Options } from "./types/App.types";
+  import type { OptionsType } from "./types/App.types";
 
   import PlayerEditor from "./PlayerEditor.svelte";
 
   const dispatch = createEventDispatcher();
 
-  let options: Options = {
+  let options: OptionsType = {
     gameMode: "default",
     players: [],
   };
@@ -17,7 +17,7 @@
   }
 
   function submit() {
-    dispatch("submit");
+    dispatch("submit", options);
   }
 </script>
 

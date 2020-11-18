@@ -1,11 +1,13 @@
 <script lang="ts">
-  import type { AppModeType } from "./types/App.types";
+  import type { AppModeType, OptionsType } from "./types/App.types";
   import Options from "./Options.svelte";
   import Reveal from "./Reveal.svelte";
 
   let mode: AppModeType = "options";
+  let options: OptionsType = {};
 
-  function handleOptionsSubmit() {
+  function handleOptionsSubmit(event) {
+    options = event.detail;
     mode = "reveal";
   }
 </script>
@@ -17,6 +19,6 @@
   {#if mode === 'options'}
     <Options on:submit={handleOptionsSubmit} />
   {:else}
-    <Reveal />
+    <Reveal {options} />
   {/if}
 </main>
