@@ -38,6 +38,6 @@
     <button
       on:click={() => {
         removePlayer(i);
-      }}>X</button>
+      }}>❌</button>
   </p>
 {/each}
