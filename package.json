@@ -2,17 +2,21 @@
   "name": "svelte-app",
   "version": "1.0.0",
   "license": "MIT",
+  "homepage": "https://gonefishing7.github.io/Among-Us-IRL-Roles-Assigner/",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public",
-    "validate": "svelte-check"
+    "validate": "svelte-check",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d public"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.0.0",
     "@rollup/plugin-typescript": "^6.0.0",
     "@tsconfig/svelte": "^1.0.0",
+    "gh-pages": "^3.1.0",
     "rollup": "^2.3.4",
     "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-svelte": "^6.0.0",
