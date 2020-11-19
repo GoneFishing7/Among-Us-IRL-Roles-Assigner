@@ -5,8 +5,10 @@
   const dispatch = createEventDispatcher();
 
   let players: Player[] = Array(5)
-    .fill("Player")
-    .map((s, i) => s + " #" + (i + 1));
+    .fill({ name: "Player" })
+    .map(({ name }, i) => {
+      return { name: name + " #" + (i + 1) };
+    });
 
   $: updatePlayers(players);
 
@@ -18,7 +20,7 @@
     players =
       players.length > 20
         ? players
-        : [...players, `Player #${players.length + 1}`];
+        : [...players, { name: `Player #${players.length + 1}` }];
   }
 
   function removePlayer(index: number) {
@@ -37,9 +39,9 @@
 </style>
 
 <button on:click={addPlayer}>Add</button>
-{#each players as player, i}
+{#each players as { name }, i}
   <p>
-    <input placeholder={player} type="text" bind:value={player} />
+    <input placeholder={name} type="text" bind:value={name} />
     <button
       on:click={() => {
         removePlayer(i);

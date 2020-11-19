@@ -410,6 +410,13 @@ is-reference@^1.1.2:
   dependencies:
     "@types/estree" "*"
 
+is-vowel@^1.2.11:
+  version "1.2.11"
+  resolved "https://registry.yarnpkg.com/is-vowel/-/is-vowel-1.2.11.tgz#7ba7a63ff8e98af6ce19028d529f35e4d5bff13f"
+  integrity sha512-axWE3FclV59eEZjfMJclrQ7miEGT6od93JdgIPTc1AB04cM2yHas2fAvsUyhpAKB3pMM1/6CDoy12PUm8LEsMA==
+  dependencies:
+    vowels "^1.0.0"
+
 jest-worker@^26.2.1:
   version "26.6.2"
   resolved "https://registry.yarnpkg.com/jest-worker/-/jest-worker-26.6.2.tgz#7f72cbc4d643c365e27b9fd775f9d0eaa9c7a8ed"
@@ -759,6 +766,11 @@ typescript@^3.9.3:
   version "3.9.7"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.7.tgz#98d600a5ebdc38f40cb277522f12dc800e9e25fa"
   integrity sha512-BLbiRkiBzAwsjut4x/dsibSTB6yWpwT5qWmC2OfuCg3GgVQCSgMs4vEctYPhsaGtd0AeuuHMkjZ2h2WG8MSzRw==
+
+vowels@^1.0.0:
+  version "1.2.11"
+  resolved "https://registry.yarnpkg.com/vowels/-/vowels-1.2.11.tgz#8b43466faf5cd62593400e87a9f14ec7c8976e8d"
+  integrity sha512-A4wnzwYCHmEJ9IfJdaquNA5VGJwDis53+WaPoiawhh+vSB+MMeI2iBTrOETgWGrcBZp8aL3kx/W8oNBFSq+7Uw==
 
 wrappy@1:
   version "1.0.2"
