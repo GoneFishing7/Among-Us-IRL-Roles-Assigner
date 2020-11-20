@@ -21,19 +21,31 @@
 </script>
 
 <style>
+  div {
+    height: 100%;
+    background-image: url("../img/background.jpg");
+    background-size: 50%;
+    background-repeat: repeat;
+    text-align: center;
+  }
+  div > * {
+    margin-top: 10px;
+  }
 </style>
 
-{#if mode === 'revealing'}
-  <RevealSinglePlayer
-    name={optionsWithRoles[currentPlayerRevealing].name}
-    role={optionsWithRoles[currentPlayerRevealing].role}
-    on:finished={() => {
-      if (currentPlayerRevealing >= optionsWithRoles.length - 1) {
-        mode = 'postreveal';
-        return;
-      }
-      currentPlayerRevealing++;
-    }} />
-{:else}
-  <p>Loading...</p>
-{/if}
+<div>
+  {#if mode === 'revealing'}
+    <RevealSinglePlayer
+      name={optionsWithRoles[currentPlayerRevealing].name}
+      role={optionsWithRoles[currentPlayerRevealing].role}
+      on:finished={() => {
+        if (currentPlayerRevealing >= optionsWithRoles.length - 1) {
+          mode = 'postreveal';
+          return;
+        }
+        currentPlayerRevealing++;
+      }} />
+  {:else}
+    <p>Loading...</p>
+  {/if}
+</div>

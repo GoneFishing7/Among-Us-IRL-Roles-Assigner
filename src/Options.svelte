@@ -29,6 +29,10 @@
     background-image: url("../img/background.jpg");
     background-size: 50%;
     background-repeat: repeat;
+    text-align: center;
+  }
+  div > * {
+    margin-top: 10px;
   }
 </style>
 

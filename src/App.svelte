@@ -20,6 +20,9 @@
     height: 100%;
   }
   main :global(*) {
+    color: white;
+
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 32px;
   }
   main > :global(button) {
@@ -28,8 +31,6 @@
   :global(input),
   :global(button) {
     background: black;
-    color: white;
-    font-family: arial;
     border-radius: 5px;
     border-width: 2px;
     border-style: solid;

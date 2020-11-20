@@ -24,10 +24,10 @@
 
 <div>
   {#if currentScreen === 'preReveal'}
-    <p>Hello, {name}!</p>
+    <div>Hello, {name}!</div>
     <button on:click={goToReveal}>Reveal Role</button>
   {:else if currentScreen === 'reveal'}
-    <p>You are {isVowel(role[0]) ? 'an' : 'a'} {role}, {name}!</p>
+    <div>You are {isVowel(role[0]) ? 'an' : 'a'} {role}, {name}!</div>
     <button on:click={goToNext}>
       Click this once you have read and memorized your role
     </button>
