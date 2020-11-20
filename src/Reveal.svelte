@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { createEventDispatcher } from "svelte";
+
   import type { OptionsType } from "./types/App.types";
 
   import { assignRoles } from "./rolesAssigner";
@@ -8,8 +10,14 @@
   export let options: OptionsType;
   $: optionsWithRoles = assignRoles(options.players, "default");
 
+  const dispatch = createEventDispatcher();
+
   let mode: "revealing" | "postreveal" = "revealing";
   let currentPlayerRevealing = 0;
+
+  $: if (mode === "postreveal") {
+    dispatch("finished");
+  }
 </script>
 
 <style>
@@ -27,5 +35,5 @@
       currentPlayerRevealing++;
     }} />
 {:else}
-  <p>finished revealing</p>
+  <p>Loading...</p>
 {/if}

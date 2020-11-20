@@ -6,10 +6,12 @@
 
   const dispatch = createEventDispatcher();
 
-  let options: OptionsType = {
+  export let initialOptions: OptionsType = {
     gameMode: "default",
     players: [],
   };
+
+  let options: OptionsType = initialOptions;
 
   function updatePlayers(event) {
     console.log(event.detail);
@@ -22,7 +24,15 @@
 </script>
 
 <style>
+  div {
+    height: 100%;
+    background-image: url("../img/background.jpg");
+    background-size: 50%;
+    background-repeat: repeat;
+  }
 </style>
 
-<PlayerEditor on:updatePlayers={updatePlayers} />
-<button on:click={submit}>Continue</button>
+<div>
+  <PlayerEditor on:updatePlayers={updatePlayers} />
+  <button on:click={submit}>Continue</button>
+</div>

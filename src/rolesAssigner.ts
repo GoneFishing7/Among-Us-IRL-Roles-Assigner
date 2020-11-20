@@ -1,4 +1,4 @@
-import type { GameModeType, Player } from "./types/App.types";
+import type { Player } from "./types/App.types";
 
 export function assignRoles(players: Player[], mode = "default"): Player[] {
   let defaultRole;

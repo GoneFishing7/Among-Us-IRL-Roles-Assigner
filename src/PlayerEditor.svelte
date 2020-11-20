@@ -36,15 +36,42 @@
 </script>
 
 <style>
+  div.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  div.col {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  div.col > :global(*) {
+    margin-top: 10px;
+  }
+  button.remove-button {
+    border: none;
+    font-size: 24px;
+  }
+  button.remove-button:focus {
+    outline: auto;
+  }
+  button.add-player-button {
+    width: fit-content;
+    margin: 0 auto;
+  }
 </style>
 
-<button on:click={addPlayer}>Add</button>
-{#each players as { name }, i}
-  <p>
-    <input placeholder={name} type="text" bind:value={name} />
-    <button
-      on:click={() => {
-        removePlayer(i);
-      }}>❌</button>
-  </p>
-{/each}
+<div class="col">
+  <button class="add-player-button" on:click={addPlayer}>Add</button>
+  {#each players as { name }, i}
+    <div class="row">
+      <input placeholder={name} type="text" bind:value={name} />
+      <button
+        on:click={() => {
+          removePlayer(i);
+        }}
+        class="remove-button">X</button>
+    </div>
+  {/each}
+</div>
