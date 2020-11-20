@@ -1,8 +1,14 @@
 {
   "version": 3,
   "file": "bundle.css",
-  "sources": [],
-  "sourcesContent": [],
+  "sources": [
+    "App.svelte",
+    "Options.svelte"
+  ],
+  "sourcesContent": [
+    "<script lang=\"ts\">;\nimport Options from \"./Options.svelte\";\nimport Reveal from \"./Reveal.svelte\";\nlet mode = \"options\";\nlet options = {};\n</script>\n\n<style>\n  main {\n    height: 100%;\n  }\n</style>\n\n<main>\n  {#if mode === 'options'}\n    <Options\n      initialOptions={{}}\n      on:submit={(event) => {\n        options = event.detail;\n        mode = 'reveal';\n      }} />\n  {:else}\n    <Reveal\n      {options}\n      on:finished={() => {\n        mode = 'options';\n      }} />\n  {/if}\n</main>\n",
+    "<script lang=\"ts\">import { createEventDispatcher } from \"svelte\";\n;\nimport PlayerEditor from \"./PlayerEditor.svelte\";\nconst dispatch = createEventDispatcher();\nexport let initialOptions = {\n    gameMode: \"default\",\n    players: [],\n};\nlet options = initialOptions;\nfunction updatePlayers(event) {\n    console.log(event.detail);\n    options.players = event.detail;\n}\nfunction submit() {\n    dispatch(\"submit\", options);\n}\n</script>\n\n<style>\n  div {\n    height: 100%;\n    background-image: url(\"../img/background.jpg\");\n    background-size: 100%;\n    background-repeat: repeat;\n  }\n</style>\n\n<div>\n  <PlayerEditor on:updatePlayers={updatePlayers} />\n  <button on:click={submit}>Continue</button>\n</div>\n"
+  ],
   "names": [],
-  "mappings": ""
+  "mappings": "AAQE,IAAI,cAAC,CAAC,AACJ,MAAM,CAAE,IAAI,AACd,CAAC;ACSD,GAAG,cAAC,CAAC,AACH,MAAM,CAAE,IAAI,CACZ,gBAAgB,CAAE,IAAI,uBAAuB,CAAC,CAC9C,eAAe,CAAE,IAAI,CACrB,iBAAiB,CAAE,MAAM,AAC3B,CAAC"
 }
