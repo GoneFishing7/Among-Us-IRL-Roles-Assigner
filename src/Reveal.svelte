@@ -4,11 +4,11 @@
   import type { OptionsType } from "./types/App.types";
 
   import { assignRoles } from "./rolesAssigner";
+  import { optionsStore } from "./stores";
 
   import RevealSinglePlayer from "./RevealSinglePlayer.svelte";
 
-  export let options: OptionsType;
-  $: optionsWithRoles = assignRoles(options.players, "default");
+  let playersWithRoles = assignRoles($optionsStore.players, "default");
 
   const dispatch = createEventDispatcher();
 
@@ -36,10 +36,10 @@
 <div>
   {#if mode === 'revealing'}
     <RevealSinglePlayer
-      name={optionsWithRoles[currentPlayerRevealing].name}
-      role={optionsWithRoles[currentPlayerRevealing].role}
+      name={playersWithRoles[currentPlayerRevealing].name}
+      role={playersWithRoles[currentPlayerRevealing].role}
       on:finished={() => {
-        if (currentPlayerRevealing >= optionsWithRoles.length - 1) {
+        if (currentPlayerRevealing >= playersWithRoles.length - 1) {
           mode = 'postreveal';
           return;
         }

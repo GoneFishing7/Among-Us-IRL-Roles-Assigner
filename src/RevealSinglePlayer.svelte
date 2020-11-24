@@ -24,7 +24,9 @@
 
 <div>
   {#if currentScreen === 'preReveal'}
-    <div>Hello, {name}!</div>
+    <div>
+      {#if name}Hello, {name}!{:else}Hello!{/if}
+    </div>
     <button on:click={goToReveal}>Reveal Role</button>
   {:else if currentScreen === 'reveal'}
     <div>You are {isVowel(role[0]) ? 'an' : 'a'} {role}, {name}!</div>

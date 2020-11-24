@@ -1,38 +1,35 @@
 <script lang="ts">
-  import { createEventDispatcher, onMount } from "svelte";
-  import type { Player } from "./types/App.types";
-
-  const dispatch = createEventDispatcher();
-
-  let players: Player[] = Array(5)
-    .fill({ name: "Player" })
-    .map(({ name }, i) => {
-      return { name: name + " #" + (i + 1) };
-    });
-
-  $: updatePlayers(players);
-
-  onMount(async () => {
-    updatePlayers(players);
-  });
+  import { optionsStore } from "./stores";
+  import type { OptionsType } from "./types/App.types";
 
   function addPlayer() {
-    players =
-      players.length > 20
-        ? players
-        : [...players, { name: `Player #${players.length + 1}` }];
+    if ($optionsStore.players.length >= 20) {
+      return;
+    }
+    optionsStore.update((old: OptionsType) => {
+      return {
+        ...old,
+        players: [...old.players, { name: "" }],
+      };
+    });
   }
 
-  function removePlayer(index: number) {
-    players =
-      players.length < 4
-        ? players
-        : [...players.slice(0, index), ...players.slice(index + 1)];
+  function removePlayer(playerIndex) {
+    if ($optionsStore.players.length <= 3) {
+      return;
+    }
+    optionsStore.update((old: OptionsType) => {
+      return {
+        ...old,
+        players: [
+          ...old.players.slice(0, playerIndex),
+          ...old.players.slice(playerIndex + 1),
+        ],
+      };
+    });
   }
 
-  function updatePlayers(players) {
-    dispatch("updatePlayers", players);
-  }
+  $: console.log($optionsStore);
 </script>
 
 <style>
@@ -52,6 +49,10 @@
   button.remove-button {
     border: none;
     font-size: 24px;
+    background-color: transparent;
+  }
+  button.remove-button:hover {
+    color: rgb(0, 173, 0);
   }
   button.remove-button:focus {
     outline: auto;
@@ -63,10 +64,10 @@
 </style>
 
 <div class="col">
-  <button class="add-player-button" on:click={addPlayer}>Add</button>
-  {#each players as { name }, i}
+  <button class="add-player-button large" on:click={addPlayer}>Add</button>
+  {#each $optionsStore.players as { name }, i (i)}
     <div class="row">
-      <input placeholder={name} type="text" bind:value={name} />
+      <input type="text" bind:value={name} />
       <button
         on:click={() => {
           removePlayer(i);

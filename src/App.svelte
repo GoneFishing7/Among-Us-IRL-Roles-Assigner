@@ -1,10 +1,9 @@
 <script lang="ts">
-  import type { AppModeType, OptionsType } from "./types/App.types";
+  import type { AppModeType } from "./types/App.types";
   import Options from "./Options.svelte";
   import Reveal from "./Reveal.svelte";
 
   let mode: AppModeType = "options";
-  let options: OptionsType = {};
 </script>
 
 <style>
@@ -15,6 +14,7 @@
     padding: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
   }
   main {
     height: 100%;
@@ -37,6 +37,13 @@
     border-color: white;
     cursor: default;
   }
+  :global(button.large) {
+    font-family: "Amatic SC", sans-serif;
+    font-size: 48px;
+  }
+  :global(button.large:hover) {
+    color: rgb(0, 173, 0);
+  }
   :global(input) {
     border-width: 4px;
     border-style: double;
@@ -44,7 +51,11 @@
   :global(input:focus),
   :global(button:focus) {
     outline: none;
-    border-color: blue;
+    border-color: grey;
+  }
+  :global(input:hover),
+  :global(button:hover) {
+    border-color: rgb(0, 173, 0);
   }
   :global(button:hover) {
     cursor: pointer;
@@ -54,14 +65,11 @@
 <main>
   {#if mode === 'options'}
     <Options
-      initialOptions={{}}
-      on:submit={(event) => {
-        options = event.detail;
+      on:submit={() => {
         mode = 'reveal';
       }} />
   {:else}
     <Reveal
-      {options}
       on:finished={() => {
         mode = 'options';
       }} />
