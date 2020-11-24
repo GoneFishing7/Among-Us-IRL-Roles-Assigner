@@ -24,7 +24,7 @@
       y: Math.random() * 100,
       z: Math.random() * 1 + 0.1,
       r: Math.random() * 360 - 180,
-      t: Math.random() * 180 - 90,
+      t: Math.random() * 90 - 45,
     };
   });
 
@@ -71,7 +71,6 @@
   }
   span.floater {
     display: block;
-    z-index: 1;
     width: 100px;
     height: 100px;
   }
@@ -95,8 +94,9 @@
   left: {floater.x}%;
   top: {floater.y}%;
   transform: scale({floater.z}) rotate({floater.r}deg);
-  background-image: {'url(img/players/white.png)'}">
-        f</span>
+  background-image: url(img/players/white.png);
+  background-size: contain;
+  " />
     {/each}
   </div>
 </div>
