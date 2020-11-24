@@ -1,6 +1,21 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
+  const colors = [
+    "black",
+    "blue",
+    "brown",
+    "cyan",
+    "green",
+    "lime",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "white",
+    "yellow",
+  ];
+
   let stars: { x: number; y: number; z: number }[] = new Array(100)
     .fill({ x: 0, y: 0, z: 0 })
     .map((_, i) => {
@@ -18,15 +33,18 @@
     z: number;
     r: number;
     t: number;
-  }[] = new Array(10).fill({ x: 0, y: 0, z: 0, r: 0, t: 0 }).map(() => {
-    return {
-      x: Math.random() * 200 - 100,
-      y: Math.random() * 100,
-      z: Math.random() * 1 + 0.1,
-      r: Math.random() * 360 - 180,
-      t: Math.random() * 90 - 45,
-    };
-  });
+  }[] = new Array(10)
+    .fill({ x: 0, y: 0, z: 0, r: 0, t: 0 })
+    .map(() => {
+      return {
+        x: Math.random() * 200 - 100,
+        y: Math.random() * 100,
+        z: Math.random() * 1 + 0.1,
+        r: Math.random() * 360 - 180,
+        t: Math.random() * 90 - 45,
+      };
+    })
+    .sort((a, b) => a.z - b.z);
 
   onMount(() => {
     let frame;
@@ -94,7 +112,7 @@
   left: {floater.x}%;
   top: {floater.y}%;
   transform: scale({floater.z}) rotate({floater.r}deg);
-  background-image: url(img/players/white.png);
+  background-image: url(img/players/{colors[Math.floor(Math.random() * colors.length)]}.png);
   background-size: contain;
   " />
     {/each}
