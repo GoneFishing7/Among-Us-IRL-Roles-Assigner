@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "VCR OSD Mono";
+  src: local("VCR OSD Mono"), local("VCROSDMono"),
+    url("fonts/VCROSDMono.woff2") format("woff2"),
+    url("fonts/VCROSDMono.woff") format("woff"),
+    url("fonts/VCROSDMono.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "In your face, Joffrey!";
+  src: local("In your face, Joffrey!"), local("InYourFaceJoffrey"),
+    url("fonts/InYourFaceJoffrey.woff2") format("woff2"),
+    url("fonts/InYourFaceJoffrey.woff") format("woff"),
+    url("fonts/InYourFaceJoffrey.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
