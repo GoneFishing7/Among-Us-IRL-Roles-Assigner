@@ -52,7 +52,7 @@
 </style>
 
 <div class="col">
-  <Button center on:click={addPlayer}>Add</Button>
+  <Button center smallCursive on:click={addPlayer}>Add Player</Button>
   {#each $optionsStore.players as { name }, i (i)}
     <div class="row">
       <Input small bind:value={name} />
