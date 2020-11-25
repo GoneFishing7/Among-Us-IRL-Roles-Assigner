@@ -1,4 +1,5 @@
 <script lang="ts">
+  export let small: boolean = false;
   export let value;
 </script>
 
@@ -18,6 +19,9 @@
   input:hover {
     border-color: rgb(0, 173, 0);
   }
+  input.small {
+    font-size: 32px;
+  }
 </style>
 
-<input bind:value type="text" />
+<input bind:value class:small type="text" />

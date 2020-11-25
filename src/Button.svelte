@@ -3,6 +3,7 @@
   export let noOutline: boolean = false;
   export let center: boolean = false;
   export let bottomRight: boolean = false;
+  export let smallCursive: boolean = false;
 </script>
 
 <style>
@@ -37,6 +38,9 @@
     font-size: unset;
     font-family: Arial, Helvetica, sans-serif;
   }
+  button.small-cursive {
+    font-size: 32px;
+  }
   button.small:hover {
     border-color: white;
   }
@@ -58,6 +62,7 @@
   class:center
   class:small
   class:no-outline={noOutline}
-  class:bottom-right={bottomRight}>
+  class:bottom-right={bottomRight}
+  class:small-cursive={smallCursive}>
   <slot />
 </button>

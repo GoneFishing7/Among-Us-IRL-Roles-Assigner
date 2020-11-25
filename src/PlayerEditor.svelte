@@ -55,12 +55,13 @@
   <Button center on:click={addPlayer}>Add</Button>
   {#each $optionsStore.players as { name }, i (i)}
     <div class="row">
-      <Input bind:value={name} />
+      <Input small bind:value={name} />
       <Button
         on:click={() => {
           removePlayer(i);
         }}
-        noOutline>
+        noOutline
+        smallCursive>
         X
       </Button>
     </div>
