@@ -23,7 +23,7 @@
     color: white;
 
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 32px;
+    font-size: 48px;
   }
   main > :global(button) {
     background-color: transparent;
@@ -32,14 +32,14 @@
   :global(button) {
     background: black;
     border-radius: 5px;
-    border-width: 2px;
+    border-width: 3px;
     border-style: solid;
     border-color: white;
     cursor: default;
   }
   :global(button.large) {
-    font-family: "Amatic SC", sans-serif;
-    font-size: 48px;
+    font-family: "In your face, Joffrey!", sans-serif;
+    font-size: 74px;
   }
   :global(button.large:hover) {
     color: rgb(0, 173, 0);

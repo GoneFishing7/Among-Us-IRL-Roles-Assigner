@@ -3,7 +3,7 @@
   import type { OptionsType } from "./types/App.types";
 
   function addPlayer() {
-    if ($optionsStore.players.length >= 20) {
+    if ($optionsStore.players.length >= 10) {
       return;
     }
     optionsStore.update((old: OptionsType) => {

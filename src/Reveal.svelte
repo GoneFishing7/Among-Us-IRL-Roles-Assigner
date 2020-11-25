@@ -1,8 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
 
-  import type { OptionsType } from "./types/App.types";
-
   import { assignRoles } from "./rolesAssigner";
   import { optionsStore } from "./stores";
 
@@ -23,9 +21,6 @@
 <style>
   div {
     height: 100%;
-    background-image: url("../img/background.jpg");
-    background-size: 50%;
-    background-repeat: repeat;
     text-align: center;
   }
   div > * {

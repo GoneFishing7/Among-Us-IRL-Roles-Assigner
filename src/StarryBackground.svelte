@@ -33,15 +33,17 @@
     z: number;
     r: number;
     t: number;
+    c: string;
   }[] = new Array(10)
-    .fill({ x: 0, y: 0, z: 0, r: 0, t: 0 })
+    .fill({ x: 0, y: 0, z: 0, r: 0, t: 0, c: "" })
     .map(() => {
       return {
         x: Math.random() * 200 - 100,
         y: Math.random() * 100,
-        z: Math.random() * 1 + 0.1,
+        z: Math.random() * 2 + 0.1,
         r: Math.random() * 360 - 180,
         t: Math.random() * 90 - 45,
+        c: colors[Math.floor(Math.random() * colors.length)],
       };
     })
     .sort((a, b) => a.z - b.z);
@@ -60,7 +62,16 @@
       floaters = floaters.map((floater) => {
         floater.x += 0.3 * floater.z;
         floater.r += 0.1 * floater.t;
-        if (floater.x > 120) floater.x = -20;
+        if (floater.x > 120) {
+          floater = {
+            ...floater,
+            x: -20,
+            y: Math.random() * 100,
+            r: Math.random() * 360 - 180,
+            t: Math.random() * 90 - 45,
+            c: colors[Math.floor(Math.random() * colors.length)],
+          };
+        }
         return floater;
       });
     }
@@ -112,7 +123,7 @@
   left: {floater.x}%;
   top: {floater.y}%;
   transform: scale({floater.z}) rotate({floater.r}deg);
-  background-image: url(img/players/{colors[Math.floor(Math.random() * colors.length)]}.png);
+  background-image: url(img/players/{floater.c}.png);
   background-size: contain;
   " />
     {/each}
