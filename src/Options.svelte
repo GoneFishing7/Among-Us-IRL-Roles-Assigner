@@ -16,7 +16,7 @@
   div {
     text-align: center;
   }
-  div > * {
+  div > :global(*) {
     margin-top: 10px;
   }
 </style>
