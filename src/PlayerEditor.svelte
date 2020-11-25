@@ -2,6 +2,9 @@
   import { optionsStore } from "./stores";
   import type { OptionsType } from "./types/App.types";
 
+  import Button from "./Button.svelte";
+  import Input from "./Input.svelte";
+
   function addPlayer() {
     if ($optionsStore.players.length >= 10) {
       return;
@@ -46,33 +49,20 @@
   div.col > :global(*) {
     margin-top: 10px;
   }
-  button.remove-button {
-    border: none;
-    font-size: 24px;
-    background-color: transparent;
-  }
-  button.remove-button:hover {
-    color: rgb(0, 173, 0);
-  }
-  button.remove-button:focus {
-    outline: auto;
-  }
-  button.add-player-button {
-    width: fit-content;
-    margin: 0 auto;
-  }
 </style>
 
 <div class="col">
-  <button class="add-player-button large" on:click={addPlayer}>Add</button>
+  <Button center on:click={addPlayer}>Add</Button>
   {#each $optionsStore.players as { name }, i (i)}
     <div class="row">
-      <input type="text" bind:value={name} />
-      <button
+      <Input bind:value={name} />
+      <Button
         on:click={() => {
           removePlayer(i);
         }}
-        class="remove-button">X</button>
+        noOutline>
+        X
+      </Button>
     </div>
   {/each}
 </div>

@@ -22,43 +22,8 @@
   main :global(*) {
     color: white;
 
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "In your face, Joffrey!", cursive;
     font-size: 48px;
-  }
-  main > :global(button) {
-    background-color: transparent;
-  }
-  :global(input),
-  :global(button) {
-    background: black;
-    border-radius: 5px;
-    border-width: 3px;
-    border-style: solid;
-    border-color: white;
-    cursor: default;
-  }
-  :global(button.large) {
-    font-family: "In your face, Joffrey!", sans-serif;
-    font-size: 74px;
-  }
-  :global(button.large:hover) {
-    color: rgb(0, 173, 0);
-  }
-  :global(input) {
-    border-width: 4px;
-    border-style: double;
-  }
-  :global(input:focus),
-  :global(button:focus) {
-    outline: none;
-    border-color: grey;
-  }
-  :global(input:hover),
-  :global(button:hover) {
-    border-color: rgb(0, 173, 0);
-  }
-  :global(button:hover) {
-    cursor: pointer;
   }
 </style>
 

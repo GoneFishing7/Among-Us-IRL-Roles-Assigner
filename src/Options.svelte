@@ -3,6 +3,7 @@
 
   import PlayerEditor from "./PlayerEditor.svelte";
   import StarryBackground from "./StarryBackground.svelte";
+  import Button from "./Button.svelte";
 
   const dispatch = createEventDispatcher();
 
@@ -23,5 +24,5 @@
 <div>
   <StarryBackground />
   <PlayerEditor />
-  <button class="large" on:click={submit}>Continue</button>
+  <Button on:click={submit}>Continue</Button>
 </div>

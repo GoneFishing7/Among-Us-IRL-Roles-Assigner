@@ -3,6 +3,8 @@
   import isVowel from "is-vowel";
   import { playSound } from "./soundPlayer";
 
+  import Button from "./Button.svelte";
+
   export let name: string;
   export let role: string;
 
@@ -66,11 +68,6 @@
   div.role.crewmate {
     color: #8dfdff;
   }
-  button.next-button {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-  }
   span.player {
     transform: scaleX(-1);
     position: absolute;
@@ -87,14 +84,9 @@
     <div>
       {#if name}Hello, {name}!{:else}Hello!{/if}
     </div>
-    <button on:click={goToReveal}>Reveal Role</button>
+    <Button on:click={goToReveal}>Reveal Role</Button>
   {:else if currentScreen === 'reveal'}
     <div class="reveal {role}">
-      {#if name}
-        {name}
-        is
-        {#if isVowel(role[0])}an{:else}a{/if}
-      {/if}
       <div class="role {role}">
         {role.slice(0, 1).toUpperCase() + role.slice(1)}
       </div>
@@ -102,8 +94,6 @@
         class="player"
         style="background-image: url(img/players/white.png)" />
     </div>
-    <button class="next-button" on:click={goToNext}>
-      Click this once you have read and memorized your role
-    </button>
+    <Button bottomRight on:click={goToNext}>Next player</Button>
   {/if}
 </div>
