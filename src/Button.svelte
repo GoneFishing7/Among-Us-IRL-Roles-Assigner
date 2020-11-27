@@ -18,13 +18,13 @@
     cursor: default;
     width: fit-content;
   }
-  button:hover {
-    color: rgb(0, 173, 0);
-    border-color: rgb(0, 173, 0);
-  }
   button:focus {
     outline: none;
     border-color: grey;
+  }
+  button:hover {
+    color: rgb(0, 173, 0);
+    border-color: rgb(0, 173, 0);
   }
   button.center {
     margin: 0 auto;
