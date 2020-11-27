@@ -77,6 +77,10 @@
     width: 250px;
     height: 250px;
   }
+  span.player div{
+    transform: scaleX(-1);
+    font-family: Arial, Helvetica, sans-serif;
+  }
 </style>
 
 <div class="container">
@@ -92,7 +96,7 @@
       </div>
       <span
         class="player"
-        style="background-image: url(img/players/white.png)" />
+    style="background-image: url(img/players/white.png)"><div>{#if name}{name}{:else}You{/if}</div></span>
     </div>
     <Button bottomRight on:click={goToNext}>Next player</Button>
   {/if}
