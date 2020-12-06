@@ -44,7 +44,7 @@
           rgba(0, 0, 0, 0.9)
         )
         no-repeat border-box,
-      linear-gradient(black 40%, rgb(49, 49, 252), black 60%) no-repeat
+      linear-gradient(black 40%, rgb(56, 183, 233), black 60%) no-repeat
         border-box;
   }
   div.reveal.impostor {
