@@ -36,15 +36,17 @@
   div.reveal {
     height: 100vh;
     width: 100vw;
+    display: flex;
+    flex-direction: column;
     background: 
       /* Fancy black transparent gradient mask turbo encabulator 5000 */ linear-gradient(
           to right,
-          rgba(0, 0, 0, 0.9),
+          rgba(0, 0, 0, 0.6),
           transparent,
-          rgba(0, 0, 0, 0.9)
+          rgba(0, 0, 0, 0.6)
         )
         no-repeat border-box,
-      linear-gradient(black 40%, rgb(56, 183, 233), black 60%) no-repeat
+      linear-gradient(black 30%, rgb(56, 255, 233), black 70%) no-repeat
         border-box;
   }
   div.reveal.impostor {
@@ -60,7 +62,7 @@
   }
   div.role {
     font-family: "VCR OSD Mono";
-    font-size: 100px;
+    font-size: 124px;
   }
   div.role.impostor {
     color: red;
@@ -68,17 +70,22 @@
   div.role.crewmate {
     color: #8dfdff;
   }
-  span.player {
-    transform: scaleX(-1);
+  .player {
     position: absolute;
-    top: 40%;
-    left: 40%;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
     background-size: contain;
     width: 250px;
     height: 250px;
   }
-  span.player div{
-    transform: scaleX(-1);
+  .player > .name {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
     font-family: Arial, Helvetica, sans-serif;
   }
 </style>
@@ -94,9 +101,11 @@
       <div class="role {role}">
         {role.slice(0, 1).toUpperCase() + role.slice(1)}
       </div>
-      <span
-        class="player"
-    style="background-image: url(img/players/white.png)"><div>{#if name}{name}{:else}You{/if}</div></span>
+      <div class="player" style="background-image: url(img/players/white.png)">
+        <span class="name">
+          {#if name}{name}{:else}You{/if}
+        </span>
+      </div>
     </div>
     <Button bottomRight on:click={goToNext}>Next player</Button>
   {/if}
