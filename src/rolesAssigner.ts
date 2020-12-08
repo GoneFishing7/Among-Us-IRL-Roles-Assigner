@@ -1,16 +1,28 @@
 import type { Player } from "./types/App.types";
+import { range, getRandom } from "./utils";
 
 export function assignRoles(players: Player[], mode = "default"): Player[] {
   let defaultRole;
+  let roles: { [role: string]: number[] };
   if (mode === "default") {
-    let impostor = Math.floor(Math.random() * players.length);
+    const numImposters = players.length >= 7 ? 2 : 1;
     defaultRole = "crewmate";
-    return players.map((player, index) => {
-      return {
-        name: player.name,
-        role: index === impostor ? "impostor" : defaultRole,
-      };
-    });
+    roles = {
+      impostor: getRandom(range(0, players.length - 1), numImposters),
+    };
+    return players.map(
+      (player, index): Player => {
+        return {
+          name: player.name,
+          role:
+            Object.entries(
+              roles
+            ).filter(([possibleRole, indexesForPossibleRole]) =>
+              indexesForPossibleRole.includes(index)
+            )?.[0]?.[0] || defaultRole,
+        };
+      }
+    );
   }
   return [];
 }
