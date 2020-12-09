@@ -4,9 +4,41 @@
   import { playSound } from "./soundPlayer";
 
   import Button from "./Button.svelte";
+  import { randomColor } from "./utils";
 
   export let name: string;
   export let role: string;
+
+  let others = ["a", "b", "c", "d", "e", "f", "g", "h", "i"];
+  const othersXMap = [11, 22, 30, 35, 39];
+  $: othersWithStyles = others.reduce(
+    (a, b, i) => ({
+      ...a,
+      [b]:
+        i % 2 === 0
+          ? `
+            top: ${50 - (i / 2 + 1)}%; left: ${50 - othersXMap[i / 2]}%; 
+            transform: translateX(-50%) translateY(-50%) scale(${
+              1 - (i / 2 + 1) / 8
+            }); 
+            background-image: url(img/players/${randomColor()}.png); 
+            filter: brightness(${100 - (i / 2 + 1) * 10}%);
+            z-index: ${10 - i};
+            `
+          : `
+            top: ${50 - (i + 1) / 2}%; left: ${
+              47 + othersXMap[(i + 1) / 2 - 1]
+            }%; 
+            transform: translateX(-50%) translateY(-50%) scaleX(-1) scale(${
+              1 - (i / 2 + 1) / 8
+            }); 
+            background-image: url(img/players/${randomColor()}.png); 
+            filter: brightness(${100 - ((i + 1) / 2 - 1) * 10}%);
+            z-index: ${10 - i};
+          `,
+    }),
+    {}
+  );
 
   const dispatch = createEventDispatcher();
 
@@ -76,10 +108,20 @@
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
 
+    z-index: 11;
+
     background-size: contain;
     width: 250px;
     height: 250px;
   }
+
+  .other {
+    position: absolute;
+    background-size: contain;
+    width: 250px;
+    height: 250px;
+  }
+
   .player > .name {
     position: absolute;
     top: 100%;
@@ -106,6 +148,9 @@
           {#if name}{name}{:else}You{/if}
         </span>
       </div>
+      {#each Object.values(othersWithStyles) as s, i}
+        <div class="other" style={s} />
+      {/each}
     </div>
     <Button bottomRight on:click={goToNext}>Next player</Button>
   {/if}

@@ -1,3 +1,20 @@
+export const colors = [
+  "black",
+  "blue",
+  "brown",
+  "cyan",
+  "green",
+  "lime",
+  "orange",
+  "pink",
+  "purple",
+  "red",
+  "white",
+  "yellow",
+];
+
+export const randomColor = () => getRandom(colors, 1)[0];
+
 /**
  * From https://stackoverflow.com/a/19270021/12701172
  *

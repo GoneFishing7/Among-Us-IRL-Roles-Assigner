@@ -1,20 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-
-  const colors = [
-    "black",
-    "blue",
-    "brown",
-    "cyan",
-    "green",
-    "lime",
-    "orange",
-    "pink",
-    "purple",
-    "red",
-    "white",
-    "yellow",
-  ];
+  import { randomColor } from "./utils";
 
   let stars: { x: number; y: number; z: number }[] = new Array(100)
     .fill({ x: 0, y: 0, z: 0 })
@@ -43,7 +29,7 @@
         z: Math.random() * 2 + 0.1,
         r: Math.random() * 360 - 180,
         t: Math.random() * 90 - 45,
-        c: colors[Math.floor(Math.random() * colors.length)],
+        c: randomColor(),
       };
     })
     .sort((a, b) => a.z - b.z);
@@ -69,7 +55,7 @@
             y: Math.random() * 100,
             r: Math.random() * 360 - 180,
             t: Math.random() * 90 - 45,
-            c: colors[Math.floor(Math.random() * colors.length)],
+            c: randomColor(),
           };
         }
         return floater;
@@ -90,7 +76,7 @@
     position: absolute;
     left: 0px;
     top: 0px;
-    z-index: -1;
+    z-index: -100;
     background-color: black;
     width: 100vw;
     height: 100vh;
