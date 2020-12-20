@@ -13,7 +13,7 @@ export function assignRoles(players: Player[], mode = "default"): Player[] {
     return players.map(
       (player, index): Player => {
         return {
-          name: player.name,
+          ...player,
           role:
             Object.entries(
               roles

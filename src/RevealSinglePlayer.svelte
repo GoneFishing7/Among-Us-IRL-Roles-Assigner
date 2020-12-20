@@ -149,7 +149,7 @@
         </span>
       </div>
       {#each Object.values(othersWithStyles) as s, i}
-        <div class="other" style={s} />
+        <div class="other" style={`${s}`} />
       {/each}
     </div>
     <Button bottomRight on:click={goToNext}>Next player</Button>
