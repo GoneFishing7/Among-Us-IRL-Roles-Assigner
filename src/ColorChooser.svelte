@@ -16,12 +16,14 @@
     height: 48px;
     width: 48px;
     border: 1px solid white;
+    background-size: contain;
+    background-color: transparent;
   }
 </style>
 
 <button
   class="color-chooser"
-  style={`background-color: ${colors[color]}`}
+  style={`background-image: url(img/players/${colors[color]}.png)`}
   on:click={() => {
     updateColor();
   }} />
