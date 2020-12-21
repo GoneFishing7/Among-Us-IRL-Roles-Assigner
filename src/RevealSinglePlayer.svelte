@@ -1,6 +1,5 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
-  import isVowel from "is-vowel";
   import { playSound } from "./soundPlayer";
 
   import Button from "./Button.svelte";

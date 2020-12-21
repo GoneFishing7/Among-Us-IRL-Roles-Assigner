@@ -46,7 +46,7 @@
         return star;
       });
       floaters = floaters.map((floater) => {
-        floater.x += 0.3 * floater.z;
+        floater.x += 0.2 * floater.z;
         floater.r += 0.1 * floater.t;
         if (floater.x > 120) {
           floater = {

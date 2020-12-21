@@ -16,8 +16,16 @@
     height: 48px;
     width: 48px;
     border: 1px solid white;
+    border-radius: 5px;
     background-size: contain;
     background-color: transparent;
+  }
+  button.color-chooser:hover {
+    cursor: pointer;
+  }
+  button.color-chooser:focus {
+    outline: none;
+    border-color: greenyellow;
   }
 </style>
 
