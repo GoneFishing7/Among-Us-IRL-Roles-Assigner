@@ -31,8 +31,13 @@
 <div>
   {#if mode === 'revealing'}
     <RevealSinglePlayer
-      name={playersWithRoles[currentPlayerRevealing].name}
-      role={playersWithRoles[currentPlayerRevealing].role}
+      {...playersWithRoles[currentPlayerRevealing]}
+      othersColors={playersWithRoles
+        .filter(
+          (player) =>
+            player.color !== playersWithRoles[currentPlayerRevealing].color
+        )
+        .map((player) => player.color)}
       on:finished={() => {
         if (currentPlayerRevealing >= playersWithRoles.length - 1) {
           mode = 'postreveal';

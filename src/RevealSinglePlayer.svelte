@@ -3,41 +3,41 @@
   import { playSound } from "./soundPlayer";
 
   import Button from "./Button.svelte";
-  import { randomColor } from "./utils";
+  import { colors } from "./utils";
 
   export let name: string;
   export let role: string;
+  export let color: number;
 
-  let others = ["a", "b", "c", "d", "e", "f", "g", "h", "i"];
+  export let othersColors: number[];
+
   const othersXMap = [11, 22, 30, 35, 39];
-  $: othersWithStyles = others.reduce(
-    (a, b, i) => ({
-      ...a,
-      [b]:
-        i % 2 === 0
-          ? `
-            top: ${50 - (i / 2 + 1)}%; left: ${50 - othersXMap[i / 2]}%; 
+  $: othersStyling = othersColors.map((color, index) =>
+    index % 2 === 0
+      ? `
+            top: ${50 - (index / 2 + 1)}%; left: ${
+          50 - othersXMap[index / 2]
+        }%; 
             transform: translateX(-50%) translateY(-50%) scale(${
-              1 - (i / 2 + 1) / 8
+              1 - (index / 2 + 1) / 8
             }); 
-            background-image: url(img/players/${randomColor()}.png); 
-            filter: brightness(${100 - (i / 2 + 1) * 10}%);
-            z-index: ${10 - i};
+            background-image: url(img/players/${colors[color]}.png); 
+            filter: brightness(${100 - (index / 2 + 1) * 10}%);
+            z-index: ${10 - index};
             `
-          : `
-            top: ${50 - (i + 1) / 2}%; left: ${
-              47 + othersXMap[(i + 1) / 2 - 1]
-            }%; 
+      : `
+            top: ${50 - (index + 1) / 2}%; left: ${
+          47 + othersXMap[(index + 1) / 2 - 1]
+        }%; 
             transform: translateX(-50%) translateY(-50%) scaleX(-1) scale(${
-              1 - (i / 2 + 1) / 8
+              1 - (index / 2 + 1) / 8
             }); 
-            background-image: url(img/players/${randomColor()}.png); 
-            filter: brightness(${100 - ((i + 1) / 2 - 1) * 10}%);
-            z-index: ${10 - i};
-          `,
-    }),
-    {}
+            background-image: url(img/players/${colors[color]}.png); 
+            filter: brightness(${100 - ((index + 1) / 2 - 1) * 10}%);
+            z-index: ${10 - index};
+          `
   );
+  $: console.log(othersColors);
 
   const dispatch = createEventDispatcher();
 
@@ -142,12 +142,14 @@
       <div class="role {role}">
         {role.slice(0, 1).toUpperCase() + role.slice(1)}
       </div>
-      <div class="player" style="background-image: url(img/players/white.png)">
+      <div
+        class="player"
+        style="background-image: url(img/players/{colors[color]}.png)">
         <span class="name">
           {#if name}{name}{:else}You{/if}
         </span>
       </div>
-      {#each Object.values(othersWithStyles) as s, i}
+      {#each othersStyling as s}
         <div class="other" style={`${s}`} />
       {/each}
     </div>
