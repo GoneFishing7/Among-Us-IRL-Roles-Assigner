@@ -60,10 +60,15 @@
   }
 
   function getNextUnusedColor(start: number) {
-    return getAllUnusedColors()[
-      [...getAllUnusedColors(), start].sort((a, b) => a - b).indexOf(start) %
-        getAllUnusedColors().length
-    ];
+    const unusedColorsIncludingStart = [...getAllUnusedColors(), start].sort(
+      (a, b) => a - b
+    );
+    let nextUnusedColor =
+      unusedColorsIncludingStart[
+        (unusedColorsIncludingStart.indexOf(start) + 1) %
+          (unusedColorsIncludingStart.length - 1)
+      ];
+    return nextUnusedColor;
   }
 
   function getAllUnusedColors() {
@@ -88,7 +93,7 @@
     flex-direction: column;
   }
   div.col > :global(*) {
-    margin-top: 10px;
+    margin-top: 4px;
   }
 </style>
 

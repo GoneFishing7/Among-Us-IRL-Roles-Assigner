@@ -13,8 +13,8 @@
 
 <style>
   button.color-chooser {
-    height: 48px;
-    width: 48px;
+    height: 42px;
+    width: 42px;
     border: 1px solid white;
     border-radius: 5px;
     background-size: contain;
@@ -25,7 +25,7 @@
   }
   button.color-chooser:focus {
     outline: none;
-    border-color: greenyellow;
+    border-color: green;
   }
 </style>
 
