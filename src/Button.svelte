@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { playSound } from "./soundPlayer";
+
   export let small: boolean = false;
   export let noOutline: boolean = false;
   export let center: boolean = false;
@@ -58,7 +60,9 @@
 
 <button
   on:click
-  on:mouseenter
+  on:mouseenter={() => {
+    playSound('buttonSound');
+  }}
   class:center
   class:small
   class:no-outline={noOutline}
