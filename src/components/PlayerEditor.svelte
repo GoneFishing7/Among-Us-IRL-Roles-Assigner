@@ -4,7 +4,7 @@
 
   import Button from "./basicComponents/Button.svelte";
   import Input from "./basicComponents/Input.svelte";
-  import ColorChooser from "./basicComponents/ColorChooser.svelte";
+  import ColorChooser from "./ColorChooser.svelte";
   import { colors, range } from "../utils";
 
   function addPlayer() {
