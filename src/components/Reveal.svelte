@@ -1,8 +1,8 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
 
-  import { assignRoles } from "./rolesAssigner";
-  import { optionsStore } from "./stores";
+  import { assignRoles } from "../rolesAssigner";
+  import { optionsStore } from "../stores";
 
   import RevealSinglePlayer from "./RevealSinglePlayer.svelte";
 

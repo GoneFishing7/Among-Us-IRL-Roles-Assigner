@@ -3,7 +3,7 @@
 
   import PlayerEditor from "./PlayerEditor.svelte";
   import StarryBackground from "./StarryBackground.svelte";
-  import Button from "./Button.svelte";
+  import Button from "./basicComponents/Button.svelte";
 
   const dispatch = createEventDispatcher();
 

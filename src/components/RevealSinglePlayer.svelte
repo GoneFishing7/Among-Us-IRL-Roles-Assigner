@@ -1,9 +1,9 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
-  import { playSound } from "./soundPlayer";
+  import { playSound } from "../soundPlayer";
 
-  import Button from "./Button.svelte";
-  import { colors } from "./utils";
+  import Button from "./basicComponents/Button.svelte";
+  import { colors } from "../utils";
 
   export let name: string;
   export let role: string;

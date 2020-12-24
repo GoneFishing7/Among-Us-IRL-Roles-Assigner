@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { AppModeType } from "./types/App.types";
-  import Options from "./Options.svelte";
-  import Reveal from "./Reveal.svelte";
+  import Options from "./components/Options.svelte";
+  import Reveal from "./components/Reveal.svelte";
 
   let mode: AppModeType = "options";
 </script>

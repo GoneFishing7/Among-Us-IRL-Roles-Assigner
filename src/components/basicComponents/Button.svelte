@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { playSound } from "./soundPlayer";
+  import { playSound } from "../../soundPlayer";
 
   export let small: boolean = false;
   export let noOutline: boolean = false;

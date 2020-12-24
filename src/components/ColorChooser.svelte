@@ -1,6 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
-  import { colors } from "./utils";
+  import { colors } from "../.../../utils";
 
   const dispatch = createEventDispatcher();
 

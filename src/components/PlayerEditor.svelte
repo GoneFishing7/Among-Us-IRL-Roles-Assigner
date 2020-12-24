@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { optionsStore } from "./stores";
-  import type { OptionsType } from "./types/App.types";
+  import { optionsStore } from "../stores";
+  import type { OptionsType } from "../types/App.types";
 
-  import Button from "./Button.svelte";
-  import Input from "./Input.svelte";
-  import ColorChooser from "./ColorChooser.svelte";
-  import { colors, range } from "./utils";
+  import Button from "./basicComponents/Button.svelte";
+  import Input from "./basicComponents/Input.svelte";
+  import ColorChooser from "./basicComponents/ColorChooser.svelte";
+  import { colors, range } from "../utils";
 
   function addPlayer() {
     if ($optionsStore.players.length >= 10) {

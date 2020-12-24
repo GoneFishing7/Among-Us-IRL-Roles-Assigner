@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { randomColor } from "./utils";
+  import { randomColor } from "../utils";
 
   let stars: { x: number; y: number; z: number }[] = new Array(100)
     .fill({ x: 0, y: 0, z: 0 })
