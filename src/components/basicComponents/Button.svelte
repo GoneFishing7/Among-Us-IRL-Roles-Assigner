@@ -6,6 +6,7 @@
   export let center: boolean = false;
   export let bottomRight: boolean = false;
   export let smallCursive: boolean = false;
+  export let zIndex: number = 0;
 </script>
 
 <style>
@@ -67,6 +68,7 @@
   class:small
   class:no-outline={noOutline}
   class:bottom-right={bottomRight}
-  class:small-cursive={smallCursive}>
+  class:small-cursive={smallCursive}
+  style={`z-index: ${zIndex}`}>
   <slot />
 </button>
