@@ -17,25 +17,31 @@
   export let name: string;
   export let role: string;
   export let color: number;
-
   export let others: Player[];
+
+  // To be shown if crewmate
   $: numImpostors = others.filter((o) => o.role === "impostor").length;
 
+  // Array of Xs to be used when rendering others
   const othersXMap = [11, 22, 30, 35, 39];
 
   const dispatch = createEventDispatcher();
 
+  // Either "hello" screen or "You Are" screen
   let currentScreen: "preReveal" | "reveal" = "preReveal";
 
+  // Play reveal sound when currentScreen changes to "reveal"
   $: {
     if (currentScreen === "reveal") {
       playSound("revealSound");
     }
   }
 
+  // Generate CSS for the other, based on color (for correct image) and index (for x position)
   function generateCSSForOther(color, index) {
     return index % 2 === 0
-      ? `
+      ? // If even
+        `
         top: ${50 - (index / 2 + 1)}%; left: ${50 - othersXMap[index / 2]}%; 
         transform: translateX(-50%) translateY(-50%) scale(${
           1 - (index / 2 + 1) / 8
@@ -43,7 +49,8 @@
         background-image: url(img/players/${colors[color]}.png); 
         filter: brightness(${100 - (index / 2 + 1) * 10}%);
         z-index: ${10 - index};`
-      : `
+      : // If odd
+        `
         top: ${50 - (index + 1) / 2}%; left: ${
           47 + othersXMap[(index + 1) / 2 - 1]
         }%; 
@@ -70,6 +77,7 @@
     margin: 0px;
     padding: 0px;
   }
+
   div.shadow-mask {
     position: absolute;
     z-index: 12;
@@ -83,6 +91,7 @@
       )
       no-repeat border-box;
   }
+
   div.reveal {
     height: 100vh;
     width: 100vw;
@@ -91,10 +100,12 @@
     background: linear-gradient(black 35%, rgb(56, 255, 233), black 65%)
       no-repeat border-box;
   }
+
   div.reveal.impostor {
     background: linear-gradient(black 40%, rgb(173, 0, 0), black 60%) no-repeat
       border-box;
   }
+
   div.role {
     position: absolute;
     top: 0;
@@ -119,10 +130,12 @@
     font-family: "VCR OSD MONO";
     color: red;
   }
+
   .crewmate {
     font-family: "VCR OSD MONO";
     color: #8dfdff;
   }
+
   .player {
     position: absolute;
     top: 50%;
@@ -155,36 +168,46 @@
 
 <div class="container">
   {#if currentScreen === 'preReveal'}
+    <!-- Pre Reveal s\Screen -->
     <div>
       {#if name}Hello, {name}!{:else}Hello!{/if}
     </div>
     <Button on:click={goToReveal}>Reveal Role</Button>
   {:else if currentScreen === 'reveal'}
+    <!-- Reveal Screen -->
+
+    <!-- Shadow mask for the nice spotlight effect -->
     <div class="shadow-mask" />
+    <!-- General Reveal Stuff, including role, subtitle, player, and others -->
     <div class="reveal {role}">
+      <!-- Part that says "Impostor" or "Crewmate" -->
       <div class="role {role}">
+        <!-- Capitalize first letter -->
         {role.slice(0, 1).toUpperCase() + role.slice(1)}
       </div>
       {#if role !== 'impostor'}
+        <!-- Tell the crewmate the number of impostors -->
         <div class="num-impostors">
           There
-          {#if numImpostors > 1}
-            are
-            <span class="impostor">{numImpostors} impostors</span>
-          {:else}is <span class="impostor">{numImpostors} impostor</span>{/if}
+          {numImpostors > 1 ? 'are' : 'is'}
+          <span class="impostor">{numImpostors}
+            impostor{numImpostors > 1 ? 's' : ''}</span>
           among us
         </div>
       {/if}
+      <!-- Render the character for the person being revealed to -->
       <div
         class="player"
         style="background-image: url(img/players/{colors[color]}.png)">
         <span class="name"> {name || 'You'} </span>
       </div>
       {#if role !== 'impostor'}
+        <!-- Render everyone else -->
         {#each others as other, i}
           <div class="other" style={generateCSSForOther(other.color, i)} />
         {/each}
       {:else}
+        <!-- Render other impostor/s -->
         {#each others.filter((o) => o.role === 'impostor') as imp, i}
           <div class="other" style={generateCSSForOther(imp.color, i)}>
             <span class="name">{imp.name || ''}</span>
@@ -192,6 +215,7 @@
         {/each}
       {/if}
     </div>
+    <!-- Next player button, z-index of 13 is the ui index -->
     <Button zIndex={13} bottomRight on:click={goToNext}>Next player</Button>
   {/if}
 </div>

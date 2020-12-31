@@ -4,8 +4,10 @@
 
   const dispatch = createEventDispatcher();
 
+  // Index of color in array `colors`
   export let color: number = 0;
 
+  // Tell parent to update color
   function updateColor() {
     dispatch("updateColor");
   }

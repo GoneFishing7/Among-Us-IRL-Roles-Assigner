@@ -2,7 +2,7 @@
   import { createEventDispatcher } from "svelte";
 
   import StarryBackground from "./StarryBackground.svelte";
-  import HomeScreen from "./HomeScreen.svelte";
+  import Home from "./Home.svelte";
   import Instructions from "./Instructions.svelte";
   import PlayerEditorPage from "./PlayerEditorPage.svelte";
 
@@ -22,6 +22,7 @@
     optionsScreen = "players";
   }
 
+  // Submit options and go to reveal
   function submit() {
     dispatch("submit");
   }
@@ -36,10 +37,13 @@
 <div class="main">
   <StarryBackground />
   {#if optionsScreen === 'general'}
-    <HomeScreen {goToInstructions} {goToPlayerEditor} />
+    <!-- Home Screen -->
+    <Home {goToInstructions} {goToPlayerEditor} />
   {:else if optionsScreen === 'instructions'}
+    <!-- Instructions -->
     <Instructions on:back={goToMain} />
   {:else}
+    <!-- Player Editor -->
     <PlayerEditorPage {submit} />
   {/if}
 </div>

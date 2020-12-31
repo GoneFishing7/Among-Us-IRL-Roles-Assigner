@@ -37,6 +37,12 @@ export function getRandom<T>(arr: Array<T>, n: number): Array<T> {
   return result;
 }
 
-export function range(start, end): number[] {
+/**
+ * Adapted from https://stackoverflow.com/a/37980601/12701172
+ *
+ * @export
+ * @returns {number[]} An array of numbers from `start` to `end-1`
+ */
+export function range(start: number, end: number): number[] {
   return ((r, e) => [...Array(e - r + 1).keys()].map((e) => e + r))(start, end);
 }

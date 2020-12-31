@@ -1,6 +1,8 @@
 <script lang="ts">
   import PlayerEditor from "./PlayerEditor.svelte";
   import Button from "./basicComponents/Button.svelte";
+
+  // Submit function, I was too lazy to implement a dispatcher
   export let submit;
 </script>
 

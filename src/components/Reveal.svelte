@@ -10,7 +10,11 @@
 
   const dispatch = createEventDispatcher();
 
+  // Revealing means in the process of showing people their roles,
+  // postreveal means finished revealing, and loading main menu (usually too fast to see).
   let mode: "revealing" | "postreveal" = "revealing";
+
+  // Index of player who is currently being shown their role
   let currentPlayerRevealing = 0;
 
   $: if (mode === "postreveal") {

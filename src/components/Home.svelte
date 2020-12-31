@@ -1,6 +1,7 @@
 <script lang="ts">
   import Button from "./basicComponents/Button.svelte";
 
+  // functions passed as props because I'm lazy
   export let goToInstructions;
   export let goToPlayerEditor;
 </script>
